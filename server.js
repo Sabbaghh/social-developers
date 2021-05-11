@@ -8,8 +8,7 @@ app.get('/', (req, res) => {
 	res.send('HELLO EXPRESS')
 })
 
-//init middleware
-//this line should be initialized to get post data
+//this line should be initialized to get the data from the api
 app.use(express.json({ extend: false }))
 
 //define routes

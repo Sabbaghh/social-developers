@@ -9,7 +9,7 @@ const Profile = require('../../models/Profile')
 //@route    POST api/Post
 //@desc     TEST route
 //@access   Private
-router.get(
+router.post(
 	'/',
 	[auth, [check('text', 'text is required').not().isEmpty()]],
 	async (req, res) => {

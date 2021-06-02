@@ -3,10 +3,10 @@ import { NavLink } from 'react-router-dom'
 
 const NavBar = () => {
 	return (
-		<nav class='navbar bg-dark'>
+		<nav className='navbar bg-dark'>
 			<h1>
 				<NavLink to='./'>
-					<i class='fas fa-code'></i> DevConnector
+					<i className='fas fa-code'></i> DevConnector
 				</NavLink>
 			</h1>
 			<ul>

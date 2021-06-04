@@ -8,15 +8,12 @@ import Register from './pages/Register'
 const App = () => {
 	return (
 		<Router>
-			<Layout>
+			<Layout className='container'>
 				<Route path='/' exact component={Landing} />
-
-				<section className='container'>
-					<Switch>
-						<Route path='/login' exact component={Login} />
-						<Route path='/Register' exact component={Register} />
-					</Switch>
-				</section>
+				<Switch>
+					<Route path='/login' exact component={Login} />
+					<Route path='/Register' exact component={Register} />
+				</Switch>
 			</Layout>
 		</Router>
 	)

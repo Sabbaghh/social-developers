@@ -26,7 +26,7 @@ router.post(
 	'/',
 	[
 		check('email', 'please enter a valid email').isEmail(),
-		check('password', 'please enter a valid password').exists(),
+		check('password', 'please enter a valid password').not().isEmpty(),
 	],
 	async (req, res) => {
 		const errors = validationResult(req)
@@ -38,11 +38,13 @@ router.post(
 		try {
 			let user = await User.findOne({ email })
 			if (!user) {
-				return res.status(400).json({ erros: { msg: 'no user' } })
+				return res
+					.status(400)
+					.json({ errors: [{ msg: 'There is no user with this email' }] })
 			}
 			const isPasswordValid = await bcrypt.compare(password, user.password)
 			if (!isPasswordValid) {
-				return res.status(400).json({ errors: { msg: 'invalid  password' } })
+				return res.status(400).json({ errors: [{ msg: 'invalid  password' }] })
 			}
 
 			const payload = { user: { id: user.id } }
@@ -55,8 +57,8 @@ router.post(
 					res.json({ token })
 				},
 			)
-		} catch (error) {
-			res.status(500).json({ error: error.message })
+		} catch (errors) {
+			res.status(500).json({ errors: error.message })
 		}
 	},
 )

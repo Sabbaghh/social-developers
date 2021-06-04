@@ -1,12 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './App.css'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import setAuthToken from './utlis/setAuthToken'
+import { loadUser } from './redux/actions/auth'
+import { useDispatch } from 'react-redux'
 import Layout from './components/Layout'
 import Landing from './pages/Landing'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Alert from './components/Alert'
 const App = () => {
+	const dispatch = useDispatch()
+	if (localStorage.token) {
+		setAuthToken(localStorage.token)
+	}
+	useEffect(() => {
+		dispatch(loadUser())
+	}, [dispatch])
 	return (
 		<Router>
 			<Switch>

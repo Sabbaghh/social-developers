@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-
+import { useDispatch } from 'react-redux'
+import { loginUser } from '../redux/actions/auth'
 const Login = () => {
+	const dispatch = useDispatch()
 	const [formData, setFormData] = useState({
 		email: '',
 		password: '',
@@ -12,11 +14,10 @@ const Login = () => {
 
 	const onSubmit = async (e) => {
 		e.preventDefault()
-		console.log(formData)
+		dispatch(loginUser(email, password))
 	}
 	return (
 		<>
-			<div className='alert alert-danger'>Invalid credentials</div>
 			<h1 className='large text-primary'>Sign In</h1>
 			<p className='lead'>
 				<i className='fas fa-user'></i> Sign into Your Account
@@ -27,7 +28,7 @@ const Login = () => {
 						type='email'
 						placeholder='Email Address'
 						name='email'
-						required
+						// required
 						value={email}
 						onChange={(e) => onChange(e)}
 					/>

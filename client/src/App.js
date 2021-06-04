@@ -9,16 +9,16 @@ import Alert from './components/Alert'
 const App = () => {
 	return (
 		<Router>
-			<Layout>
-				<Switch>
+			<Switch>
+				<Layout>
 					<Route path='/' exact component={Landing} />
 					<section className='container'>
 						<Alert />
 						<Route path='/login' exact component={Login} />
 						<Route path='/Register' exact component={Register} />
 					</section>
-				</Switch>
-			</Layout>
+				</Layout>
+			</Switch>
 		</Router>
 	)
 }

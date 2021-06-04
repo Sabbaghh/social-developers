@@ -1,10 +1,8 @@
-import LoginReducer from './LoginReducer'
-import SignUpReducer from './SignUpReducer'
+import alert from './alert'
 import { combineReducers } from 'redux'
 
-const reducer = combineReducers({
-	LoginReducer,
-	SignUpReducer,
+const reducers = combineReducers({
+	alert,
 })
 
-export default reducer
+export default reducers

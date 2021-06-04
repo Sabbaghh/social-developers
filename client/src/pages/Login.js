@@ -1,11 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
-import { test } from '../redux/actions'
 
 const Login = () => {
-	const LoginReducer = useSelector((state) => state.LoginReducer)
-	const dispatch = useDispatch()
 	const [formData, setFormData] = useState({
 		email: '',
 		password: '',
@@ -20,10 +16,6 @@ const Login = () => {
 	}
 	return (
 		<section className='container'>
-			<div style={{ color: 'black' }}>
-				<button onClick={() => dispatch(test())}>+</button>
-				{LoginReducer}
-			</div>
 			<div className='alert alert-danger'>Invalid credentials</div>
 			<h1 className='large text-primary'>Sign In</h1>
 			<p className='lead'>

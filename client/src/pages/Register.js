@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { setAlert } from '../redux/actions/alert'
 
 const Register = () => {
 	const dispatch = useDispatch()
-	const Alert = useSelector((state) => state.alert)
+
 	const [formData, setFormData] = useState({
 		name: '',
 		email: '',
@@ -24,7 +24,7 @@ const Register = () => {
 		}
 	}
 	return (
-		<section className='container'>
+		<>
 			<h1 className='large text-primary'>Sign Up</h1>
 			<p className='lead'>
 				<i className='fas fa-user'></i> Create Your Account
@@ -81,7 +81,7 @@ const Register = () => {
 			<p className='my-1'>
 				Already have an account? <Link to='/login'>Sign In</Link>
 			</p>
-		</section>
+		</>
 	)
 }
 

@@ -5,14 +5,18 @@ import Layout from './components/Layout'
 import Landing from './pages/Landing'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import Alert from './components/Alert'
 const App = () => {
 	return (
 		<Router>
-			<Layout className='container'>
-				<Route path='/' exact component={Landing} />
+			<Layout>
 				<Switch>
-					<Route path='/login' exact component={Login} />
-					<Route path='/Register' exact component={Register} />
+					<Route path='/' exact component={Landing} />
+					<section className='container'>
+						<Alert />
+						<Route path='/login' exact component={Login} />
+						<Route path='/Register' exact component={Register} />
+					</section>
 				</Switch>
 			</Layout>
 		</Router>

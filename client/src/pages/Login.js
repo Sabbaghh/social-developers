@@ -15,7 +15,7 @@ const Login = () => {
 		console.log(formData)
 	}
 	return (
-		<section className='container'>
+		<>
 			<div className='alert alert-danger'>Invalid credentials</div>
 			<h1 className='large text-primary'>Sign In</h1>
 			<p className='lead'>
@@ -46,7 +46,7 @@ const Login = () => {
 			<p className='my-1'>
 				Don't have an account?<Link to='/register'>Register</Link>
 			</p>
-		</section>
+		</>
 	)
 }
 

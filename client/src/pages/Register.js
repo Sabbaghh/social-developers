@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { Link, Redirect } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import { setAlert } from '../redux/actions/alert'
 import { registerNewUser } from '../redux/actions/auth'
 
@@ -23,6 +23,11 @@ const Register = () => {
 		} else {
 			dispatch(registerNewUser(name, email, password))
 		}
+	}
+	const isAuthenticated = useSelector((state) => state.auth.isAuthenticated)
+	// redirect if logged in
+	if (isAuthenticated) {
+		return <Redirect to='/dashboard' />
 	}
 	return (
 		<>

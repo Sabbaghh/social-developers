@@ -7,6 +7,7 @@ const {
 	AUTH_ERROR,
 	LOGIN_FAIL,
 	LOGIN_SUCCESS,
+	LOG_OUT_USER,
 } = constants
 
 const initialState = {
@@ -26,8 +27,15 @@ const auth = (state = initialState, action) => {
 		case REGISTER_FAIL:
 		case AUTH_ERROR:
 		case LOGIN_FAIL:
+		case LOG_OUT_USER:
 			localStorage.removeItem('token')
-			return { ...state, token: null, isAuthenticated: false, loading: false }
+			return {
+				...state,
+				token: null,
+				isAuthenticated: false,
+				loading: false,
+				user: null,
+			}
 		case USER_LOADED:
 			return {
 				...state,

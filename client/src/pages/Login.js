@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { Link, Redirect } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import { loginUser } from '../redux/actions/auth'
 const Login = () => {
 	const dispatch = useDispatch()
+	const isAuthenticated = useSelector((state) => state.auth.isAuthenticated)
 	const [formData, setFormData] = useState({
 		email: '',
 		password: '',
@@ -15,6 +16,11 @@ const Login = () => {
 	const onSubmit = async (e) => {
 		e.preventDefault()
 		dispatch(loginUser(email, password))
+	}
+
+	// redirect if logged in
+	if (isAuthenticated) {
+		return <Redirect to='/dashboard' />
 	}
 	return (
 		<>

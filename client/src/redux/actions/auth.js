@@ -10,6 +10,7 @@ const {
 	USER_LOADED,
 	LOGIN_SUCCESS,
 	LOGIN_FAIL,
+	LOG_OUT_USER,
 } = constants
 
 //load user
@@ -92,4 +93,10 @@ export const loginUser = (email, password) => async (dispatch) => {
 			type: LOGIN_FAIL,
 		})
 	}
+}
+
+export const logOutUser = () => async (dispatch) => {
+	await dispatch({
+		type: LOG_OUT_USER,
+	})
 }

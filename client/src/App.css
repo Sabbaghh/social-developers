@@ -25,7 +25,9 @@ a {
   color: var(--primary-color);
   text-decoration: none;
 }
-
+ .nav-active{
+        color: #e76f51 !important
+    }
 ul {
   list-style: none;
 }
@@ -212,6 +214,10 @@ img {
 .bg-light,
 .badge-light {
   border: #ccc solid 1px;
+}
+
+.bg-transparent {
+  background: transparent;
 }
 
 .round-img {

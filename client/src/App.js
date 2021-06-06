@@ -8,6 +8,8 @@ import Layout from './components/Layout'
 import Landing from './pages/Landing'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import Dashboard from './pages/Dashboard'
+import PrivateRoute from './components/routing/PrivateRoute'
 import Alert from './components/Alert'
 const App = () => {
 	const dispatch = useDispatch()
@@ -26,6 +28,7 @@ const App = () => {
 						<Alert />
 						<Route path='/login' component={Login} />
 						<Route path='/Register' component={Register} />
+						<PrivateRoute exact path='/Dashboard' component={Dashboard} />
 					</section>
 				</Layout>
 			</Switch>

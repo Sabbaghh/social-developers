@@ -54,7 +54,6 @@ export const registerNewUser = (name, email, password) => async (dispatch) => {
 		dispatch(loadUser())
 	} catch (errors) {
 		const err = errors.response.data.errors
-		console.log(err)
 		if (err) {
 			err.forEach((errs) => dispatch(setAlert(errs.msg, 'danger')))
 		}
@@ -84,11 +83,9 @@ export const loginUser = (email, password) => async (dispatch) => {
 		dispatch(loadUser())
 	} catch (errors) {
 		const err = errors.response.data.errors
-		console.log(err)
 		if (err) {
 			err.forEach((errs) => dispatch(setAlert(errs.msg, 'danger')))
 		}
-		console.log(errors.response.data)
 		dispatch({
 			type: LOGIN_FAIL,
 		})

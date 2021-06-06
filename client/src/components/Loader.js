@@ -1,8 +1,25 @@
 import React from 'react'
-import './styles/loader.css'
+import Spinner from '../img/spinner.gif'
 
-const Loader = () => {
-	return <div className='loader'>Loading...</div>
+const Loader = ({ width, flex }) => {
+	return (
+		<div
+			style={{
+				display: `${flex ? 'flex' : 'inline-block'}`,
+				justifyContent: 'center',
+				alignItems: 'center',
+			}}
+			className='loader'
+		>
+			{
+				<img
+					style={{ width: `${width ? width : '1rem'}` }}
+					src={Spinner}
+					alt='loading..'
+				/>
+			}
+		</div>
+	)
 }
 
 export default Loader

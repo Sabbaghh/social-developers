@@ -37,7 +37,8 @@ const NavBar = () => {
 					<>
 						<li>
 							<NavLink activeClassName='nav-active' to='/dashboard'>
-								Dashboard
+								<i className='fa fa-user ' /> {` `}
+								<span className='hide-sm'>Dashboard</span>
 							</NavLink>
 						</li>
 						<li>

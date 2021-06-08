@@ -9,6 +9,7 @@ const LOGIN_FAIL = 'LOGIN_FAIL'
 const LOG_OUT_USER = 'LOG_OUT_USER'
 const GET_PROFILE = 'GET_PROFILE'
 const PROFILE_ERROR = 'PROFILE_ERROR'
+const CLEAR_PROFILE = 'CLEAR_PROFILE'
 
 const constants = {
 	SET_ALERT,
@@ -22,6 +23,7 @@ const constants = {
 	LOG_OUT_USER,
 	GET_PROFILE,
 	PROFILE_ERROR,
+	CLEAR_PROFILE,
 }
 
 export default constants

@@ -11,6 +11,7 @@ import Register from './pages/Register'
 import Dashboard from './pages/Dashboard'
 import PrivateRoute from './components/routing/PrivateRoute'
 import Alert from './components/Alert'
+import CreateProfile from './pages/CreateProfile'
 const App = () => {
 	const dispatch = useDispatch()
 	if (localStorage.token) {
@@ -29,6 +30,11 @@ const App = () => {
 						<Route path='/login' component={Login} />
 						<Route path='/Register' component={Register} />
 						<PrivateRoute exact path='/Dashboard' component={Dashboard} />
+						<PrivateRoute
+							exact
+							path='/create-profile'
+							component={CreateProfile}
+						/>
 					</section>
 				</Layout>
 			</Switch>

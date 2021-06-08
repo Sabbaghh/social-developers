@@ -3,7 +3,6 @@ import { getProfile } from '../redux/actions/profile'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Loader from '../components/Loader'
-import profile from './../redux/reducers/profile'
 
 const Dashboard = () => {
 	const dispatch = useDispatch()

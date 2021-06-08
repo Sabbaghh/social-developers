@@ -1,7 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
+import { createProfile, getProfile } from '../redux/actions/profile'
+import { Link } from 'react-router-dom'
 
 export const CreateProfile = () => {
+	const dispatch = useDispatch()
+	const history = useHistory()
+	const { profile, loading } = useSelector((state) => state.profile)
 	const [formData, setFormData] = useState({
 		company: '',
 		website: '',
@@ -17,27 +23,31 @@ export const CreateProfile = () => {
 		instagram: '',
 	})
 	const [ToggleSocialMediaInputs, setToggleSocialMediaInputs] = useState(false)
-
-	const {
-		company,
-		website,
-		location,
-		skills,
-		githubusername,
-		bio,
-		twitter,
-		facebook,
-		linkedin,
-		youtube,
-		instagram,
-		status,
-	} = FormData
+	useEffect(() => {
+		dispatch(getProfile())
+		if (profile && !loading) {
+			setFormData({
+				company: profile.company ? profile.company : '',
+				website: profile.website ? profile.website : '',
+				location: profile.location ? profile.location : '',
+				status: profile.status ? profile.status : '',
+				skills: profile.skills ? profile.skills.join(',') : '',
+				githubusername: profile.githubusername ? profile.githubusername : '',
+				bio: profile.bio ? profile.bio : '',
+				twitter: profile.twitter ? profile.twitter : '',
+				facebook: profile.facebook ? profile.facebook : '',
+				linkedin: profile.linkedin ? profile.linkedin : '',
+				youtube: profile.youtube ? profile.youtube : '',
+				instagram: profile.instagram ? profile.instagram : '',
+			})
+		}
+	}, [loading, dispatch])
 
 	const onChange = (e) =>
 		setFormData({ ...formData, [e.target.name]: e.target.value })
 	const onSubmit = (e) => {
 		e.preventDefault()
-		console.log({ ...formData })
+		dispatch(createProfile(formData, history, profile ? true : false))
 	}
 	return (
 		<>
@@ -50,7 +60,11 @@ export const CreateProfile = () => {
 			<form className='form' onSubmit={(e) => onSubmit(e)}>
 				<div className='form-group'>
 					<label>Status</label>
-					<select name='status' value={status} onChange={(e) => onChange(e)}>
+					<select
+						name='status'
+						value={formData.status}
+						onChange={(e) => onChange(e)}
+					>
 						<option value='0'>* Select Professional Status</option>
 						<option value='Developer'>Developer</option>
 						<option value='Junior Developer'>Junior Developer</option>
@@ -71,7 +85,7 @@ export const CreateProfile = () => {
 						type='text'
 						placeholder='Company'
 						name='company'
-						value={company}
+						value={formData.company}
 						onChange={(e) => onChange(e)}
 					/>
 					<small className='form-text'>
@@ -84,7 +98,7 @@ export const CreateProfile = () => {
 						type='text'
 						placeholder='Website'
 						name='website'
-						value={website}
+						value={formData.website}
 						onChange={(e) => onChange(e)}
 					/>
 					<small className='form-text'>
@@ -97,7 +111,7 @@ export const CreateProfile = () => {
 						type='text'
 						placeholder='Location'
 						name='location'
-						value={location}
+						value={formData.location}
 						onChange={(e) => onChange(e)}
 					/>
 					<small className='form-text'>
@@ -110,7 +124,7 @@ export const CreateProfile = () => {
 						type='text'
 						placeholder='* Skills'
 						name='skills'
-						value={skills}
+						value={formData.skills}
 						onChange={(e) => onChange(e)}
 					/>
 					<small className='form-text'>
@@ -123,7 +137,7 @@ export const CreateProfile = () => {
 						type='text'
 						placeholder='Github Username'
 						name='githubusername'
-						value={githubusername}
+						value={formData.githubusername}
 						onChange={(e) => onChange(e)}
 					/>
 					<small className='form-text'>
@@ -136,7 +150,7 @@ export const CreateProfile = () => {
 					<textarea
 						placeholder='A short bio of yourself'
 						name='bio'
-						value={bio}
+						value={formData.bio}
 						onChange={(e) => onChange(e)}
 					></textarea>
 					<small className='form-text'>Tell us a little about yourself</small>
@@ -160,7 +174,7 @@ export const CreateProfile = () => {
 								type='text'
 								placeholder='Twitter URL'
 								name='twitter'
-								value={twitter}
+								value={formData.twitter}
 								onChange={(e) => onChange(e)}
 							/>
 						</div>
@@ -171,7 +185,7 @@ export const CreateProfile = () => {
 								type='text'
 								placeholder='Facebook URL'
 								name='facebook'
-								value={facebook}
+								value={formData.facebook}
 								onChange={(e) => onChange(e)}
 							/>
 						</div>
@@ -182,7 +196,7 @@ export const CreateProfile = () => {
 								type='text'
 								placeholder='YouTube URL'
 								name='youtube'
-								value={youtube}
+								value={formData.youtube}
 								onChange={(e) => onChange(e)}
 							/>
 						</div>
@@ -193,7 +207,7 @@ export const CreateProfile = () => {
 								type='text'
 								placeholder='Linkedin URL'
 								name='linkedin'
-								value={linkedin}
+								value={formData.linkedin}
 								onChange={(e) => onChange(e)}
 							/>
 						</div>
@@ -204,17 +218,21 @@ export const CreateProfile = () => {
 								type='text'
 								placeholder='Instagram URL'
 								name='instagram'
-								value={instagram}
+								value={formData.instagram}
 								onChange={(e) => onChange(e)}
 							/>
 						</div>
 					</>
 				)}
 
-				<input type='submit' className='btn btn-primary my-1' />
-				<a className='btn btn-light my-1' href='dashboard.html'>
+				<input
+					type='submit'
+					value={profile ? 'SAVE CHANGES' : 'SUBMIT'}
+					className='btn btn-primary my-1'
+				/>
+				<Link className='btn btn-light my-1' to='/dashboard'>
 					Go Back
-				</a>
+				</Link>
 			</form>
 		</>
 	)

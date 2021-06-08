@@ -11,7 +11,10 @@ const {
 	LOGIN_SUCCESS,
 	LOGIN_FAIL,
 	LOG_OUT_USER,
+<<<<<<< HEAD
 	CLEAR_PROFILE,
+=======
+>>>>>>> ed9bc35 ( initalize logout finctionality)
 } = constants
 
 //load user
@@ -93,6 +96,7 @@ export const loginUser = (email, password) => async (dispatch) => {
 	}
 }
 
+<<<<<<< HEAD
 export const logOutUser = () => (dispatch) => {
 	dispatch({
 		type: LOG_OUT_USER,
@@ -100,4 +104,10 @@ export const logOutUser = () => (dispatch) => {
 	dispatch({
 		type: CLEAR_PROFILE,
 	})
+=======
+export const logOutUser = () => async (dispatch) => {
+	await dispatch({
+		type: LOG_OUT_USER,
+	})
+>>>>>>> ed9bc35 ( initalize logout finctionality)
 }

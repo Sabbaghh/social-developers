@@ -28,7 +28,11 @@ const auth = (state = initialState, action) => {
 		case AUTH_ERROR:
 		case LOGIN_FAIL:
 		case LOG_OUT_USER:
+<<<<<<< HEAD
 			localStorage.clear('token')
+=======
+			localStorage.removeItem('token')
+>>>>>>> ed9bc35 ( initalize logout finctionality)
 			return {
 				...state,
 				token: null,

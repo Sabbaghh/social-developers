@@ -7,11 +7,14 @@ const AUTH_ERROR = 'AUTH_ERROR'
 const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 const LOGIN_FAIL = 'LOGIN_FAIL'
 const LOG_OUT_USER = 'LOG_OUT_USER'
+<<<<<<< HEAD
 const GET_PROFILE = 'GET_PROFILE'
 const PROFILE_ERROR = 'PROFILE_ERROR'
 const CLEAR_PROFILE = 'CLEAR_PROFILE'
 const ADD_EXPERIENCE = 'ADD_EXPERIENCE'
 const ADD_EDUCATION = 'ADD_EDUCATION'
+=======
+>>>>>>> ed9bc35 ( initalize logout finctionality)
 
 const constants = {
 	SET_ALERT,
@@ -23,11 +26,14 @@ const constants = {
 	LOGIN_SUCCESS,
 	LOGIN_FAIL,
 	LOG_OUT_USER,
+<<<<<<< HEAD
 	GET_PROFILE,
 	PROFILE_ERROR,
 	CLEAR_PROFILE,
 	ADD_EXPERIENCE,
 	ADD_EDUCATION,
+=======
+>>>>>>> ed9bc35 ( initalize logout finctionality)
 }
 
 export default constants

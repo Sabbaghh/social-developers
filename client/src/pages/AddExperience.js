@@ -8,7 +8,7 @@ const AddExperience = () => {
 		title: '',
 		company: '',
 		location: '',
-		current: false,
+		current: true,
 		from: '',
 		to: '',
 		description: '',
@@ -72,21 +72,28 @@ const AddExperience = () => {
 						<input
 							type='checkbox'
 							name='current'
-							value={formData.current}
-							onChange={(e) => onChange(e)}
+							value=''
+							checked={formData.current}
+							onChange={() =>
+								setFormData({ ...formData, current: !formData.current })
+							}
 						/>{' '}
 						Current Job
 					</p>
 				</div>
-				<div className='form-group'>
-					<h4>To Date</h4>
-					<input
-						type='date'
-						name='to'
-						value={formData.to}
-						onChange={(e) => onChange(e)}
-					/>
-				</div>
+				{!formData.current && (
+					<>
+						<div className='form-group'>
+							<h4>To Date</h4>
+							<input
+								type='date'
+								name='to'
+								value={formData.to}
+								onChange={(e) => onChange(e)}
+							/>
+						</div>
+					</>
+				)}
 				<div className='form-group'>
 					<textarea
 						name='description'

@@ -20,6 +20,7 @@ const profile = (state = intialState, action) => {
 	switch (type) {
 		case GET_PROFILE:
 		case ADD_EXPERIENCE:
+		case ADD_EDUCATION:
 			return { ...state, profile: payload, loading: false, errors: {} }
 		case CLEAR_PROFILE:
 			return { ...state, profile: null, repos: [], loading: false }

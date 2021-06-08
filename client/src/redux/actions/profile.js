@@ -89,3 +89,29 @@ export const AddExperiences = (formData) => async (dispatch) => {
 }
 
 //Add education
+export const AddEducations = (formData) => async (dispatch) => {
+	try {
+		const config = {
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		}
+		const body = JSON.stringify({ ...formData })
+		const res = await axios.put('/api/profile/education', body, config)
+		dispatch({
+			type: ADD_EDUCATION,
+			payload: res.data,
+		})
+		dispatch(setAlert('A new Education has just been added', 'success'))
+	} catch (err) {
+		console.log(err)
+		dispatch({
+			type: PROFILE_ERROR,
+			payload: { msg: err.response.statusText, status: err.response.status },
+		})
+		const erros = err.response.data.errors
+		if (erros) {
+			erros.forEach((errs) => dispatch(setAlert(errs.msg, 'danger')))
+		}
+	}
+}

@@ -3,7 +3,9 @@ import { getProfile } from '../redux/actions/profile'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import DashboardActions from '../components/DashboardActions'
+import Experience from './../components/Experience'
 import Loader from '../components/Loader'
+import Education from './../components/Education'
 
 const Dashboard = () => {
 	const dispatch = useDispatch()
@@ -28,13 +30,15 @@ const Dashboard = () => {
 					{profile ? (
 						<>
 							<DashboardActions />
+							<Education />
+							<Experience />
 						</>
 					) : (
 						<>
 							<h2 className='larger text-primary'>
 								You have not yet setup a profile , Please add some info
 							</h2>
-							<Link to='/create-profile' className='btn btn-primary my-1'>
+							<Link to='/create-profile' className='my-1 btn btn-primary'>
 								Create Profile
 							</Link>
 						</>

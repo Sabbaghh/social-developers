@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { AddEducations } from '../redux/actions/profile'
+import { useHistory } from 'react-router-dom'
 
 const AddEducation = () => {
 	const dispatch = useDispatch()
+	const history = useHistory()
 	const [formData, setFormData] = useState({
 		school: '',
 		degree: '',
@@ -17,7 +19,7 @@ const AddEducation = () => {
 		setFormData({ ...formData, [e.target.name]: e.target.value })
 	const onSubmit = (e) => {
 		e.preventDefault()
-		dispatch(AddEducations(formData))
+		dispatch(AddEducations(formData, history))
 		console.log(formData)
 	}
 	return (

@@ -61,7 +61,7 @@ export const createProfile = (formData, history, edit) => async (dispatch) => {
 
 //Add experince
 
-export const AddExperiences = (formData) => async (dispatch) => {
+export const AddExperiences = (formData, history) => async (dispatch) => {
 	try {
 		const config = {
 			headers: {
@@ -75,6 +75,7 @@ export const AddExperiences = (formData) => async (dispatch) => {
 			payload: res.data,
 		})
 		dispatch(setAlert('A new experince has just been added', 'success'))
+		history.push('/dashboard')
 	} catch (err) {
 		console.log(err)
 		dispatch({
@@ -89,7 +90,7 @@ export const AddExperiences = (formData) => async (dispatch) => {
 }
 
 //Add education
-export const AddEducations = (formData) => async (dispatch) => {
+export const AddEducations = (formData, history) => async (dispatch) => {
 	try {
 		const config = {
 			headers: {
@@ -103,6 +104,7 @@ export const AddEducations = (formData) => async (dispatch) => {
 			payload: res.data,
 		})
 		dispatch(setAlert('A new Education has just been added', 'success'))
+		history.push('/dashboard')
 	} catch (err) {
 		console.log(err)
 		dispatch({

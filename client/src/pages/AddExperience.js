@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { AddExperiences } from '../redux/actions/profile'
+import { useHistory } from 'react-router-dom'
 
 const AddExperience = () => {
 	const dispatch = useDispatch()
+	const history = useHistory()
 	const [formData, setFormData] = useState({
 		title: '',
 		company: '',
@@ -17,7 +19,7 @@ const AddExperience = () => {
 		setFormData({ ...formData, [e.target.name]: e.target.value })
 	const onSubmit = (e) => {
 		e.preventDefault()
-		dispatch(AddExperiences(formData))
+		dispatch(AddExperiences(formData, history))
 		console.log(formData)
 	}
 	return (

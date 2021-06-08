@@ -36,7 +36,6 @@ const App = () => {
 						<Alert />
 						<Route path='/login' component={Login} />
 						<Route path='/Register' component={Register} />
-<<<<<<< HEAD
 						<PrivateRoute
 							exact
 							path='/Dashboard'
@@ -65,8 +64,6 @@ const App = () => {
 							condition={!isAuthenticated && !loading}
 							redirect='/Dashboard'
 						/>
-=======
->>>>>>> ed9bc35 ( initalize logout finctionality)
 					</section>
 				</Layout>
 			</Switch>

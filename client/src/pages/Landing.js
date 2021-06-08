@@ -1,19 +1,12 @@
 import React from 'react'
-<<<<<<< HEAD
 import { Link, Redirect } from 'react-router-dom'
-=======
-import { Link } from 'react-router-dom'
->>>>>>> ed9bc35 ( initalize logout finctionality)
 import { useSelector } from 'react-redux'
 
 const Landing = () => {
 	const isAuthenticated = useSelector((state) => state.auth.isAuthenticated)
-<<<<<<< HEAD
 	if (isAuthenticated) {
 		return <Redirect to='/dashboard' />
 	}
-=======
->>>>>>> ed9bc35 ( initalize logout finctionality)
 	return (
 		<>
 			<section className='landing'>

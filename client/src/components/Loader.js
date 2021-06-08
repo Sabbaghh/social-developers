@@ -1,5 +1,4 @@
 import React from 'react'
-<<<<<<< HEAD
 import Spinner from '../img/spinner.gif'
 
 const Loader = ({ width, flex }) => {
@@ -21,12 +20,6 @@ const Loader = ({ width, flex }) => {
 			}
 		</div>
 	)
-=======
-import './styles/loader.css'
-
-const Loader = () => {
-	return <div class='loader'>Loading...</div>
->>>>>>> ed9bc35 ( initalize logout finctionality)
 }
 
 export default Loader

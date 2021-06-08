@@ -37,12 +37,8 @@ const NavBar = () => {
 					<>
 						<li>
 							<NavLink activeClassName='nav-active' to='/dashboard'>
-<<<<<<< HEAD
 								<i className='fa fa-user ' /> {` `}
 								<span className='hide-sm'>Dashboard</span>
-=======
-								Dashboard
->>>>>>> ed9bc35 ( initalize logout finctionality)
 							</NavLink>
 						</li>
 						<li>

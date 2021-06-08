@@ -34,7 +34,7 @@ const Login = () => {
 						type='email'
 						placeholder='Email Address'
 						name='email'
-						// required
+						required
 						value={email}
 						onChange={(e) => onChange(e)}
 					/>

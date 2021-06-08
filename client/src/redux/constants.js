@@ -10,6 +10,8 @@ const LOG_OUT_USER = 'LOG_OUT_USER'
 const GET_PROFILE = 'GET_PROFILE'
 const PROFILE_ERROR = 'PROFILE_ERROR'
 const CLEAR_PROFILE = 'CLEAR_PROFILE'
+const ADD_EXPERIENCE = 'ADD_EXPERIENCE'
+const ADD_EDUCATION = 'ADD_EDUCATION'
 
 const constants = {
 	SET_ALERT,
@@ -24,6 +26,8 @@ const constants = {
 	GET_PROFILE,
 	PROFILE_ERROR,
 	CLEAR_PROFILE,
+	ADD_EXPERIENCE,
+	ADD_EDUCATION,
 }
 
 export default constants

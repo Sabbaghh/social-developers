@@ -2,7 +2,7 @@ import axios from 'axios'
 import { setAlert } from './alert'
 import constants from '../constants'
 
-const { PROFILE_ERROR, GET_PROFILE } = constants
+const { PROFILE_ERROR, GET_PROFILE, ADD_EXPERIENCE, ADD_EDUCATION } = constants
 
 //get current user profile
 export const getProfile = () => async (dispatch) => {
@@ -13,7 +13,6 @@ export const getProfile = () => async (dispatch) => {
 			payload: res.data,
 		})
 	} catch (err) {
-		console.log(err)
 		dispatch({
 			type: PROFILE_ERROR,
 			payload: { msg: err.response.statusText, status: err.response.status },
@@ -23,14 +22,14 @@ export const getProfile = () => async (dispatch) => {
 
 //create or update profile
 
-export const createProfile = (formDate, history, edit) => async (dispatch) => {
+export const createProfile = (formData, history, edit) => async (dispatch) => {
 	try {
 		const config = {
 			headers: {
 				'Content-Type': 'application/json',
 			},
 		}
-		const body = JSON.stringify({ ...formDate })
+		const body = JSON.stringify({ ...formData })
 		const res = await axios.post('/api/profile', body, config)
 		dispatch({
 			type: GET_PROFILE,
@@ -59,3 +58,34 @@ export const createProfile = (formDate, history, edit) => async (dispatch) => {
 		}
 	}
 }
+
+//Add experince
+
+export const AddExperiences = (formData) => async (dispatch) => {
+	try {
+		const config = {
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		}
+		const body = JSON.stringify({ ...formData })
+		const res = await axios.put('/api/profile/experience', body, config)
+		dispatch({
+			type: ADD_EXPERIENCE,
+			payload: res.data,
+		})
+		dispatch(setAlert('A new experince has just been added', 'success'))
+	} catch (err) {
+		console.log(err)
+		dispatch({
+			type: PROFILE_ERROR,
+			payload: { msg: err.response.statusText, status: err.response.status },
+		})
+		const erros = err.response.data.errors
+		if (erros) {
+			erros.forEach((errs) => dispatch(setAlert(errs.msg, 'danger')))
+		}
+	}
+}
+
+//Add education

@@ -43,7 +43,7 @@ const Register = () => {
 						type='text'
 						placeholder='Name'
 						name='name'
-						// required
+						required
 					/>
 				</div>
 				<div className='form-group'>
@@ -53,7 +53,7 @@ const Register = () => {
 						type='email'
 						placeholder='Email Address'
 						name='email'
-						// required
+						required
 					/>
 					<small className='form-text'>
 						This site uses Gravatar so if you want a profile image, use a
@@ -68,7 +68,7 @@ const Register = () => {
 						placeholder='Password'
 						name='password'
 						minLength='6'
-						// required
+						required
 					/>
 				</div>
 				<div className='form-group'>
@@ -79,7 +79,7 @@ const Register = () => {
 						minLength='6'
 						vlaue={password2}
 						onChange={(e) => onChange(e)}
-						// required
+						required
 					/>
 				</div>
 				<input type='submit' className='btn btn-primary' value='Register' />

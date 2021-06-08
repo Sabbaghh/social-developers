@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { getProfile } from '../redux/actions/profile'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import DashboardActions from '../components/DashboardActions'
 import Loader from '../components/Loader'
 
 const Dashboard = () => {
@@ -23,8 +24,11 @@ const Dashboard = () => {
 						<i className='fas fa-user' />
 						{` `} Welcome {user && user.name}
 					</p>
+
 					{profile ? (
-						<>there's a profile</>
+						<>
+							<DashboardActions />
+						</>
 					) : (
 						<>
 							<h2 className='larger text-primary'>

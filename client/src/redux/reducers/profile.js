@@ -13,6 +13,8 @@ const {
 	CLEAR_PROFILE,
 	ADD_EDUCATION,
 	ADD_EXPERIENCE,
+	DELETE_EDUCATION,
+	DELETE_EXPERIENCE,
 } = constants
 
 const profile = (state = intialState, action) => {
@@ -21,6 +23,8 @@ const profile = (state = intialState, action) => {
 		case GET_PROFILE:
 		case ADD_EXPERIENCE:
 		case ADD_EDUCATION:
+		case DELETE_EDUCATION:
+		case DELETE_EXPERIENCE:
 			return { ...state, profile: payload, loading: false, errors: {} }
 		case CLEAR_PROFILE:
 			return { ...state, profile: null, repos: [], loading: false }

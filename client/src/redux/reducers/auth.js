@@ -8,6 +8,7 @@ const {
 	LOGIN_FAIL,
 	LOGIN_SUCCESS,
 	LOG_OUT_USER,
+	DELETE_USER,
 } = constants
 
 const initialState = {
@@ -28,6 +29,7 @@ const auth = (state = initialState, action) => {
 		case AUTH_ERROR:
 		case LOGIN_FAIL:
 		case LOG_OUT_USER:
+		case DELETE_USER:
 			localStorage.clear('token')
 			return {
 				...state,

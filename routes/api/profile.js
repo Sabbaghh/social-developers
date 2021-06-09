@@ -140,7 +140,7 @@ router.get('/user/:user_id', async (req, res) => {
 router.delete('/', auth, async (req, res) => {
 	try {
 		//DELTE USER POST
-		await Pos.deleteMany({ user: req.id })
+		await Post.deleteMany({ user: req.id })
 		//remove profile
 		await Profile.findOneAndRemove({ user: req.user.id })
 		//remove user
@@ -262,7 +262,6 @@ router.put(
 //@access   Private
 router.delete('/education/:edu_id', auth, async (req, res) => {
 	const { edu_id } = req.params
-	console.log(edu_id)
 	try {
 		//get profile
 		const profile = await Profile.findOne({ user: req.user.id })

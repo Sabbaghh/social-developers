@@ -9,6 +9,7 @@ import Landing from './pages/Landing'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Dashboard from './pages/Dashboard'
+import Profiles from './pages/Profiles'
 import PrivateRoute from './components/routing/PrivateRoute'
 import AddEducation from './pages/AddEducation'
 import AddExperience from './pages/AddExperience'
@@ -36,6 +37,7 @@ const App = () => {
 						<Alert />
 						<Route path='/login' component={Login} />
 						<Route path='/Register' component={Register} />
+						<Route path='/profiles' component={Profiles} />
 						<PrivateRoute
 							exact
 							path='/Dashboard'

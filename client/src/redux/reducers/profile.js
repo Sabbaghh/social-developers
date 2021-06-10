@@ -33,7 +33,7 @@ const profile = (state = intialState, action) => {
 		case GET_REPOS:
 			return { ...state, repos: payload, loading: false, errors: {} }
 		case CLEAR_PROFILE:
-			return { ...state, profile: null, repos: [], loading: false }
+			return { ...state, profile: null, repos: [], loading: true }
 		case PROFILE_ERROR:
 			return { ...state, profile: null, errors: payload, loading: false }
 		default:

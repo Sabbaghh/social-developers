@@ -41,6 +41,7 @@ export const CreateProfile = () => {
 				instagram: profile.instagram ? profile.instagram : '',
 			})
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [loading, dispatch])
 
 	const onChange = (e) =>
@@ -228,9 +229,9 @@ export const CreateProfile = () => {
 				<input
 					type='submit'
 					value={profile ? 'SAVE CHANGES' : 'SUBMIT'}
-					className='btn btn-primary my-1'
+					className='my-1 btn btn-primary'
 				/>
-				<Link className='btn btn-light my-1' to='/dashboard'>
+				<Link className='my-1 btn btn-light' to='/dashboard'>
 					Go Back
 				</Link>
 			</form>

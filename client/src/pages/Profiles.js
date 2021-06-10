@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
 import { getProfiles } from '../redux/actions/profile'
-import ProfileItem from './../components/ProfileItem'
+import ProfileItem from '../components/ProfileItem'
 
 const Profile = () => {
 	const dispatch = useDispatch()

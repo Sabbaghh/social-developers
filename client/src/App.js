@@ -10,6 +10,7 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import Dashboard from './pages/Dashboard'
 import Profiles from './pages/Profiles'
+import Profile from './pages/Profile'
 import PrivateRoute from './components/routing/PrivateRoute'
 import AddEducation from './pages/AddEducation'
 import AddExperience from './pages/AddExperience'
@@ -37,7 +38,8 @@ const App = () => {
 						<Alert />
 						<Route path='/login' component={Login} />
 						<Route path='/Register' component={Register} />
-						<Route path='/profiles' component={Profiles} />
+						<Route exact path='/profiles' component={Profiles} />
+						<Route path='/profile/:id' component={Profile} />
 						<PrivateRoute
 							exact
 							path='/Dashboard'

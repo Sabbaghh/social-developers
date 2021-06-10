@@ -34,11 +34,11 @@ export const CreateProfile = () => {
 				skills: profile.skills ? profile.skills.join(',') : '',
 				githubusername: profile.githubusername ? profile.githubusername : '',
 				bio: profile.bio ? profile.bio : '',
-				twitter: profile.twitter ? profile.twitter : '',
-				facebook: profile.facebook ? profile.facebook : '',
-				linkedin: profile.linkedin ? profile.linkedin : '',
-				youtube: profile.youtube ? profile.youtube : '',
-				instagram: profile.instagram ? profile.instagram : '',
+				twitter: profile.social.twitter ? profile.social.twitter : '',
+				facebook: profile.social.facebook ? profile.social.facebook : '',
+				linkedin: profile.social.linkedin ? profile.social.linkedin : '',
+				youtube: profile.social.youtube ? profile.social.youtube : '',
+				instagram: profile.social.instagram ? profile.social.instagram : '',
 			})
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps

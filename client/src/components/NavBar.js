@@ -11,14 +11,16 @@ const NavBar = () => {
 	return (
 		<nav className='navbar bg-dark'>
 			<h1>
-				<NavLink activeClassName='nav-active' to='/'>
+				<NavLink activeClassName='nav-active' exact to='/'>
 					<i className='fas fa-code'></i> DevConnector
 				</NavLink>
 				{loading && <Loader />}
 			</h1>
 			<ul>
 				<li>
-					<NavLink to='/profiles'>Developers</NavLink>
+					<NavLink activeClassName='nav-active' to='/profiles'>
+						Developers
+					</NavLink>
 				</li>
 				{!isAuthenticated ? (
 					<>
@@ -36,6 +38,11 @@ const NavBar = () => {
 				) : (
 					<>
 						<li>
+							<NavLink activeClassName='nav-active' to='/posts'>
+								<span>Posts</span>
+							</NavLink>
+						</li>
+						<li>
 							<NavLink activeClassName='nav-active' to='/dashboard'>
 								<i className='fa fa-user ' /> {` `}
 								<span className='hide-sm'>Dashboard</span>
@@ -44,6 +51,7 @@ const NavBar = () => {
 						<li>
 							<NavLink
 								activeClassName='nav-active'
+								exact
 								to='/'
 								onClick={() => dispatch(logOutUser())}
 							>

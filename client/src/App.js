@@ -16,6 +16,7 @@ import AddEducation from './pages/AddEducation'
 import AddExperience from './pages/AddExperience'
 import Alert from './components/Alert'
 import CreateProfile from './pages/CreateProfile'
+import Posts from './pages/Posts'
 
 //redux
 import { useSelector } from 'react-redux'
@@ -67,6 +68,13 @@ const App = () => {
 							component={AddExperience}
 							condition={!isAuthenticated && !loading}
 							redirect='/Dashboard'
+						/>
+						<PrivateRoute
+							exact
+							path='/posts'
+							component={Posts}
+							condition={!isAuthenticated && !loading}
+							redirect='/Posts'
 						/>
 					</section>
 				</Layout>

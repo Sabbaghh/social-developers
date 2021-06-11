@@ -17,6 +17,9 @@ const ADD_EDUCATION = 'ADD_EDUCATION'
 const DELETE_EXPERIENCE = 'DELETE_EXPERIENCE'
 const DELETE_EDUCATION = 'DELETE_EDUCATION'
 const DELETE_USER = 'DELETE_USER'
+const GET_POST = 'GET_POST'
+const POST_ERROR = 'POST_ERROR'
+const GET_POSTS = 'GET_POSTS'
 
 const constants = {
 	SET_ALERT,
@@ -38,6 +41,10 @@ const constants = {
 	DELETE_USER,
 	GET_PROFILES,
 	GET_REPOS,
+	GET_POST,
+	GET_POSTS,
+	POST_ERROR,
+	GET_POSTS,
 }
 
 export default constants

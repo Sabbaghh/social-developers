@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import Loader from '../components/Loader'
 import ProfileTop from '../components/ProfileTop'
 import { getProfilesByID } from '../redux/actions/profile'
+import ProfileAbout from '../components/ProfileAbout'
 
 const Profile = ({ match }) => {
 	const dispatch = useDispatch()
@@ -50,6 +51,11 @@ const Profile = ({ match }) => {
 							status={profile.status}
 							company={profile.company}
 							location={profile.location}
+						/>
+						<ProfileAbout
+							name={profile.user.name}
+							bio={profile.bio}
+							skills={profile.skills}
 						/>
 					</div>
 				</>

@@ -5,6 +5,8 @@ import Loader from '../components/Loader'
 import ProfileTop from '../components/ProfileTop'
 import { getProfilesByID } from '../redux/actions/profile'
 import ProfileAbout from '../components/ProfileAbout'
+import ProfileEducation from '../components/ProfileEducation'
+import ProfileExperience from '../components/ProrfileExperience'
 
 const Profile = ({ match }) => {
 	const dispatch = useDispatch()
@@ -57,6 +59,8 @@ const Profile = ({ match }) => {
 							bio={profile.bio}
 							skills={profile.skills}
 						/>
+						<ProfileExperience experiences={profile.experience} />
+						<ProfileEducation educations={profile.education} />
 					</div>
 				</>
 			)}

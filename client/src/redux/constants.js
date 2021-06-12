@@ -20,8 +20,7 @@ const DELETE_USER = 'DELETE_USER'
 const GET_POST = 'GET_POST'
 const POST_ERROR = 'POST_ERROR'
 const GET_POSTS = 'GET_POSTS'
-const LIKE_A_POST = 'LIKE_A_POST'
-const UNLIKE_A_POST = 'UNLIKE_A_POST'
+const UPDATE_LIKES = 'UPDATE_LIKES'
 
 const constants = {
 	SET_ALERT,
@@ -46,9 +45,7 @@ const constants = {
 	GET_POST,
 	GET_POSTS,
 	POST_ERROR,
-	GET_POSTS,
-	LIKE_A_POST,
-	UNLIKE_A_POST,
+	UPDATE_LIKES,
 }
 
 export default constants

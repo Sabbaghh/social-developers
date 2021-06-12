@@ -109,12 +109,12 @@ router.put('/like/:id', auth, async (req, res) => {
 			post.likes.filter((like) => like.user.toString() === req.user.id).length >
 			0
 		) {
-			res.status(400).json({ msg: 'user already liked this post' })
+			return res.status(400).json({ msg: 'user already liked this post' })
 		}
 		//like if not liked
 		post.likes.unshift({ user: req.user.id })
 		await post.save()
-		res.status(200).json({ likes: post.likes })
+		res.status(200).json(post.likes)
 	} catch (error) {
 		console.error(error)
 		res.status(500).send('SERVER ERROR')
@@ -133,7 +133,7 @@ router.put('/unlike/:id', auth, async (req, res) => {
 			post.likes.filter((like) => like.user.toString() === req.user.id)
 				.length === 0
 		) {
-			res.status(400).json({ msg: 'user unliked liked this post' })
+			return res.status(400).json({ msg: 'user unliked liked this post' })
 		}
 		//remove the like if liked
 		const removedIndex = post.likes.map((like) => {

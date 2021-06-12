@@ -8,9 +8,9 @@ import CreatePost from '../components/CreatePost'
 import PostItem from '../components/PostItem'
 const Posts = () => {
 	const dispatch = useDispatch()
-	const { posts, loading } = useSelector((state) => state.post)
+	const { loading, posts } = useSelector((state) => state.post)
 	useEffect(() => {
-		dispatch(getPosts())
+		return dispatch(getPosts())
 	}, [dispatch])
 	return (
 		<>
@@ -26,11 +26,14 @@ const Posts = () => {
 					<CreatePost />
 
 					<div className='posts'>
-						{posts.length > 0 ? (
-							<PostItem posts={posts} />
+						{posts && posts.length > 0 ? (
+							posts.map((post) => {
+								return <PostItem key={post._id} posts={post} />
+							})
 						) : (
-							<h6 classNameName='text-dark'> There are no posts for now</h6>
+							<h6 className='text-dark'>no posts for now</h6>
 						)}
+
 						<div />
 					</div>
 				</>

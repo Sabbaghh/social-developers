@@ -74,7 +74,7 @@ const App = () => {
 							path='/posts'
 							component={Posts}
 							condition={!isAuthenticated && !loading}
-							redirect='/Posts'
+							redirect='/'
 						/>
 					</section>
 				</Layout>

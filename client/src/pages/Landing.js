@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import NavBar from '../components/NavBar'
 
 const Landing = () => {
 	const isAuthenticated = useSelector((state) => state.auth.isAuthenticated)
@@ -10,6 +11,7 @@ const Landing = () => {
 	return (
 		<>
 			<section className='landing'>
+				<NavBar />
 				<div className='dark-overlay'>
 					<div className='landing-inner'>
 						<h1 className='x-large'>Developer Connector</h1>

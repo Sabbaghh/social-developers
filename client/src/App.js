@@ -18,6 +18,7 @@ import Alert from './components/Alert'
 import CreateProfile from './pages/CreateProfile'
 import Posts from './pages/Posts'
 import Post from './pages/Post'
+import NavBar from './components/NavBar'
 
 //redux
 import { useSelector } from 'react-redux'
@@ -34,8 +35,9 @@ const App = () => {
 	return (
 		<Router>
 			<Switch>
+				<Route path='/' exact component={Landing} />
 				<Layout>
-					<Route path='/' exact component={Landing} />
+					<NavBar />
 					<section className='container'>
 						<Alert />
 						<Route path='/login' component={Login} />

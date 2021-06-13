@@ -6,8 +6,7 @@ const Profile = require('../../models/Profile')
 const User = require('../../models/User')
 const Post = require('../../models/Post')
 const router = express.Router()
-const config = require('config')
-const axios = require('axios')
+require('dotenv').config()
 
 //@route    GET api/profile/me
 //@desc     get current users profile
@@ -288,11 +287,7 @@ router.get('/github/:username', (req, res) => {
 	try {
 		const options = {
 			uri: `
-		https://api.github.com/users/${
-			req.params.username
-		}/repos?per_page=5&sort=created:asc&client_id=${config.get(
-				'githubClientID',
-			)}&client_secret=${config.get('githubClintSecret')}`,
+		https://api.github.com/users/${req.params.username}/repos?per_page=5&sort=created:asc&client_id=${process.env.githubClientID}&client_secret=${process.env.githubClintSecret}`,
 			mehtod: 'GET',
 			headers: {
 				'user-agent': 'node.js',

@@ -3,7 +3,7 @@ import Moment from 'react-moment'
 const ProrfileExperience = ({ experiences = [] }) => {
 	return (
 		<>
-			<div className='profile-exp bg-white p-2'>
+			<div className='p-2 bg-white profile-exp'>
 				<h2 className='text-primary'>Experience</h2>
 				{experiences.length > 0 ? (
 					<>
@@ -39,7 +39,7 @@ const ProrfileExperience = ({ experiences = [] }) => {
 						)}
 					</>
 				) : (
-					<h6 class=' text-dark'>NO EXPERIENCES ARE PROVIDED YET.</h6>
+					<h6 className=' text-dark'>NO EXPERIENCES ARE PROVIDED YET.</h6>
 				)}
 			</div>
 		</>

@@ -19,6 +19,7 @@ import CreateProfile from './pages/CreateProfile'
 import Posts from './pages/Posts'
 import Post from './pages/Post'
 import NavBar from './components/NavBar'
+import NotFound from './pages/404'
 
 //redux
 import { useSelector } from 'react-redux'

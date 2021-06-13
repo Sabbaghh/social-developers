@@ -4,7 +4,7 @@ import Moment from 'react-moment'
 const ProfileEducation = ({ educations = [] }) => {
 	return (
 		<>
-			<div className='profile-edu bg-white p-2'>
+			<div className='p-2 bg-white profile-edu'>
 				<h2 className='text-primary'>Education</h2>
 				{educations.length > 0 ? (
 					<>
@@ -49,7 +49,7 @@ const ProfileEducation = ({ educations = [] }) => {
 						)}
 					</>
 				) : (
-					<h6 class=' text-dark'>NO EDUCATIONS ARE PROVIDED YET.</h6>
+					<h6 className=' text-dark'>NO EDUCATIONS ARE PROVIDED YET.</h6>
 				)}
 			</div>
 		</>

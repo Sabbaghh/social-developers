@@ -21,6 +21,7 @@ const GET_POST = 'GET_POST'
 const POST_ERROR = 'POST_ERROR'
 const GET_POSTS = 'GET_POSTS'
 const UPDATE_LIKES = 'UPDATE_LIKES'
+const ADD_POST = 'ADD_POST'
 
 const constants = {
 	SET_ALERT,
@@ -46,6 +47,7 @@ const constants = {
 	GET_POSTS,
 	POST_ERROR,
 	UPDATE_LIKES,
+	ADD_POST,
 }
 
 export default constants

@@ -17,6 +17,7 @@ import AddExperience from './pages/AddExperience'
 import Alert from './components/Alert'
 import CreateProfile from './pages/CreateProfile'
 import Posts from './pages/Posts'
+import Post from './pages/Post'
 
 //redux
 import { useSelector } from 'react-redux'
@@ -73,6 +74,13 @@ const App = () => {
 							exact
 							path='/posts'
 							component={Posts}
+							condition={!isAuthenticated && !loading}
+							redirect='/'
+						/>
+						<PrivateRoute
+							exact
+							path='/posts/:id'
+							component={Post}
 							condition={!isAuthenticated && !loading}
 							redirect='/'
 						/>

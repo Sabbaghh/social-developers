@@ -1,7 +1,22 @@
 import axios from 'axios'
 import constants from '../constants'
 import { setAlert } from './alert'
-const { GET_POST, GET_POSTS, POST_ERROR, UPDATE_LIKES } = constants
+const { GET_POST, GET_POSTS, POST_ERROR, UPDATE_LIKES, ADD_POST } = constants
+
+export const getPostByID = (postId) => async (dispatch) => {
+	try {
+		const res = await axios.get(`/api/post/${postId}`)
+		dispatch({ type: GET_POST, payload: res.data })
+	} catch (err) {
+		dispatch({
+			type: POST_ERROR,
+			payload: {
+				msg: err.response.statusText,
+				status: err.response.status,
+			},
+		})
+	}
+}
 
 //get all posts
 export const getPosts = () => async (dispatch) => {
@@ -68,5 +83,30 @@ export const removePostBtID = (postId) => async (dispatch) => {
 				},
 			})
 		}
+	}
+}
+
+export const createPost = (formData) => async (dispatch) => {
+	try {
+		const config = {
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		}
+		const body = JSON.stringify({ ...formData })
+		const res = await axios.post('/api/post', body, config)
+		dispatch({
+			type: ADD_POST,
+			payload: res.data,
+		})
+		dispatch(setAlert('Post created', 'success'))
+	} catch (err) {
+		dispatch({
+			type: POST_ERROR,
+			payload: {
+				msg: err.response.statusText,
+				status: err.response.status,
+			},
+		})
 	}
 }

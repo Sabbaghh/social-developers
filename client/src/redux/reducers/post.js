@@ -1,5 +1,5 @@
 import constants from '../constants'
-const { GET_POST, POST_ERROR, GET_POSTS, UPDATE_LIKES } = constants
+const { GET_POST, POST_ERROR, GET_POSTS, UPDATE_LIKES, ADD_POST } = constants
 const initialState = {
 	posts: [],
 	post: null,
@@ -24,6 +24,13 @@ const post = (state = initialState, action) => {
 				...state,
 				post: null,
 				posts: payload,
+				loading: false,
+				error: {},
+			}
+		case ADD_POST:
+			return {
+				...state,
+				posts: [payload, ...state.posts],
 				loading: false,
 				error: {},
 			}

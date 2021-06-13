@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import Moment from 'react-moment'
 import { likePost, unlikePost } from '../redux/actions/post'
 import { useDispatch, useSelector } from 'react-redux'
-import { removePostBtID } from '../redux/actions/post'
+import { removePostBtID, getPostByID } from '../redux/actions/post'
 
 const PostItem = ({ posts }) => {
 	const { loading, user } = useSelector((state) => state.auth)
@@ -54,12 +54,12 @@ const PostItem = ({ posts }) => {
 					<i className='fas fa-thumbs-down'></i>
 				</button>
 
-				<a href='!#' className='btn btn-primary'>
+				<Link to={`posts/${posts._id}`} className='btn btn-primary'>
 					Discussion{' '}
 					<span className='comment-count'>
 						{posts.comments && posts.comments.length}
 					</span>
-				</a>
+				</Link>
 				{userOwnsPost && (
 					<button
 						onClick={() => deletePost(posts._id)}

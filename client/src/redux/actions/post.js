@@ -50,3 +50,23 @@ export const unlikePost = (id) => async (dispatch) => {
 		})
 	}
 }
+
+//remove a post by id
+
+export const removePostBtID = (postId) => async (dispatch) => {
+	if (window.confirm(`Are you sure ? this can't be undone`)) {
+		try {
+			await axios.delete(`/api/post/${postId}`)
+			dispatch(getPosts())
+			dispatch(setAlert(`Your post have been deleted`))
+		} catch (err) {
+			dispatch({
+				type: POST_ERROR,
+				payload: {
+					msg: err.response.statusText,
+					status: err.response.status,
+				},
+			})
+		}
+	}
+}

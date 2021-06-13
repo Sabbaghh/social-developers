@@ -2,15 +2,22 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Moment from 'react-moment'
 import { likePost, unlikePost } from '../redux/actions/post'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { removePostBtID } from '../redux/actions/post'
 
 const PostItem = ({ posts }) => {
+	const { loading, user } = useSelector((state) => state.auth)
+	//this constant identify if the  user owns the post
+	const userOwnsPost = !loading && posts.user === user._id
 	const dispatch = useDispatch()
 	const like = (id) => {
 		dispatch(likePost(id))
 	}
 	const unlike = (id) => {
 		dispatch(unlikePost(id))
+	}
+	const deletePost = (id) => {
+		dispatch(removePostBtID(id))
 	}
 	return (
 		<div className='p-1 my-1 bg-white post'>
@@ -53,9 +60,15 @@ const PostItem = ({ posts }) => {
 						{posts.comments && posts.comments.length}
 					</span>
 				</a>
-				{/* <button type='button' className='btn btn-danger'>
-														<i className='fas fa-times'></i>
-													</button> */}
+				{userOwnsPost && (
+					<button
+						onClick={() => deletePost(posts._id)}
+						type='button'
+						className='btn btn-danger'
+					>
+						<i className='fas fa-times'></i>
+					</button>
+				)}
 			</div>
 		</div>
 	)

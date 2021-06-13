@@ -26,6 +26,7 @@ const CreatePost = () => {
 					placeholder='Create a post'
 					required
 					onChange={(e) => onChange(e)}
+					value={formData.text}
 				></textarea>
 				<input type='submit' className='my-1 btn btn-dark' value='Submit' />
 			</form>

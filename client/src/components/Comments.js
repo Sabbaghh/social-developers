@@ -1,8 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Moment from 'react-moment'
+import { useSelector, useDispatch } from 'react-redux'
+import { removeComment } from '../redux/actions/post'
 
-const Comments = ({ comment }) => {
+const Comments = ({ comment, postID }) => {
+	const dispatch = useDispatch()
+	//constant if user owns the comment
+	const { user } = useSelector((state) => state.auth)
+	const userOwnsComment = user._id === comment.user
+	const deleteComment = (commentID) => {
+		dispatch(removeComment(postID, commentID))
+	}
 	return (
 		<>
 			<div className='p-1 my-1 bg-white post'>
@@ -18,6 +27,15 @@ const Comments = ({ comment }) => {
 						{comment.date}
 					</Moment>
 				</div>
+				{userOwnsComment && (
+					<button
+						type='button'
+						className='btn btn-danger'
+						onClick={() => deleteComment(comment._id)}
+					>
+						<i className='fas fa-times'></i>
+					</button>
+				)}
 			</div>
 		</>
 	)

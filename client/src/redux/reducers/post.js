@@ -1,5 +1,12 @@
 import constants from '../constants'
-const { GET_POST, POST_ERROR, GET_POSTS, UPDATE_LIKES, ADD_POST } = constants
+const {
+	GET_POST,
+	POST_ERROR,
+	GET_POSTS,
+	UPDATE_LIKES,
+	ADD_POST,
+	UPDATE_COMMENTS,
+} = constants
 const initialState = {
 	posts: [],
 	post: null,
@@ -34,8 +41,13 @@ const post = (state = initialState, action) => {
 				loading: false,
 				error: {},
 			}
+		case UPDATE_COMMENTS:
+			return {
+				...state,
+				post: { ...state.post, comments: payload },
+				loading: false,
+			}
 		case UPDATE_LIKES:
-			console.log(payload.likes.likes)
 			return {
 				...state,
 				posts: state.posts.map((post) => {

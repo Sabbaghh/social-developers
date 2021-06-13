@@ -1,7 +1,14 @@
 import axios from 'axios'
 import constants from '../constants'
 import { setAlert } from './alert'
-const { GET_POST, GET_POSTS, POST_ERROR, UPDATE_LIKES, ADD_POST } = constants
+const {
+	GET_POST,
+	GET_POSTS,
+	POST_ERROR,
+	UPDATE_LIKES,
+	ADD_POST,
+	UPDATE_COMMENTS,
+} = constants
 
 export const getPostByID = (postId) => async (dispatch) => {
 	try {
@@ -86,6 +93,7 @@ export const removePostBtID = (postId) => async (dispatch) => {
 	}
 }
 
+//create post
 export const createPost = (formData) => async (dispatch) => {
 	try {
 		const config = {
@@ -100,6 +108,52 @@ export const createPost = (formData) => async (dispatch) => {
 			payload: res.data,
 		})
 		dispatch(setAlert('Post created', 'success'))
+	} catch (err) {
+		dispatch({
+			type: POST_ERROR,
+			payload: {
+				msg: err.response.statusText,
+				status: err.response.status,
+			},
+		})
+	}
+}
+
+//create comment
+export const createComment = (formData, postID) => async (dispatch) => {
+	try {
+		const config = {
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		}
+		const body = JSON.stringify({ ...formData })
+		const res = await axios.put(`/api/post/comment/${postID}`, body, config)
+		dispatch({
+			type: UPDATE_COMMENTS,
+			payload: res.data,
+		})
+		dispatch(setAlert('Your Comment has been posted', 'success'))
+	} catch (err) {
+		dispatch({
+			type: POST_ERROR,
+			payload: {
+				msg: err.response.statusText,
+				status: err.response.status,
+			},
+		})
+	}
+}
+
+//Remove comment
+export const removeComment = (postID, commentID) => async (dispatch) => {
+	try {
+		const res = await axios.delete(`/api/post/comment/${postID}/${commentID}`)
+		dispatch({
+			type: UPDATE_COMMENTS,
+			payload: res.data,
+		})
+		dispatch(setAlert('Your Comment has been deleted'))
 	} catch (err) {
 		dispatch({
 			type: POST_ERROR,

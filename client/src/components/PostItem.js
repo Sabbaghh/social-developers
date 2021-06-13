@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import Moment from 'react-moment'
 import { likePost, unlikePost } from '../redux/actions/post'
 import { useDispatch, useSelector } from 'react-redux'
-import { removePostBtID, getPostByID } from '../redux/actions/post'
+import { removePostBtID } from '../redux/actions/post'
 
 const PostItem = ({ posts }) => {
 	const { loading, user } = useSelector((state) => state.auth)
@@ -41,7 +41,6 @@ const PostItem = ({ posts }) => {
 					<i className='fas fa-thumbs-up'></i>
 					<span>
 						{posts.likes && posts.likes.length > 0 && posts.likes.length}
-						{/* {console.log(posts.likes)} */}
 					</span>
 				</button>
 

@@ -33,11 +33,17 @@ const Post = ({ match }) => {
 									<p className='my-1'>{post.text}</p>
 								</div>
 							</div>
-							<CreateComment />
+							<CreateComment postId={post._id} />
 							<div className='comments'>
 								{post?.comments.length > 0 ? (
 									post.comments.map((comment) => {
-										return <Comments key={comment._id} comment={comment} />
+										return (
+											<Comments
+												key={comment._id}
+												postID={post._id}
+												comment={comment}
+											/>
+										)
 									})
 								) : (
 									<h6 className='text-dark'>there are no comments for now</h6>

@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { createComment } from '../redux/actions/post'
 
-const CreateComment = () => {
+const CreateComment = ({ postId }) => {
+	const dispatch = useDispatch()
 	const [formData, setFormData] = useState({ text: '' })
 	const onChange = (e) =>
 		setFormData({ ...formData, [e.target.name]: e.target.value })
 	const onSubmit = (e) => {
 		e.preventDefault()
-		console.log(formData)
+		dispatch(createComment(formData, postId))
 	}
 	return (
 		<div onSubmit={(e) => onSubmit(e)} className='post-form'>
